@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Three Dudes. Three Bikes. — India &amp; Indonesia, October 2026</title>
-<meta name="description" content="Three friends, three bikes, three weeks: India's Golden Triangle, then 1,213 km across Java on Yamaha NMax 155s — two volcanoes and a ferry to Bali. October 2026.">
+<meta name="description" content="Three friends, three bikes, three weeks: India's Golden Triangle, then 1,430 km across Java on Yamaha NMax 155s — two volcanoes and a ferry to Bali. October 2026.">
 
 <!-- Open Graph / social share (WhatsApp, Telegram, iMessage) -->
 <!-- NOTE: og:url and og:image must be ABSOLUTE URLs. They are updated to the live site URL at deploy time. -->
@@ -28,6 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Route map module (draws the two maps). Loaded before the inline <style> so the page's own layout rules win ties. -->
+<link rel="stylesheet" href="route-map.css">
+<script src="route-map.js" defer></script>
 <style>
   :root{
     --ink:#241E1A;        /* text & fine linework only */
@@ -58,31 +61,104 @@
   a{color:inherit}
   a:focus-visible,button:focus-visible{outline:2px solid var(--mustard);outline-offset:3px}
 
-  /* ---------- top bar ---------- */
+  /* ---------- sticky top bar ---------- */
+  /* --bar-h = the header height. Desktop: one row (logo | clock | menu). Phone: two rows (clock / logo + menu).
+     The hero and every anchor target use it, so nothing ever hides behind the sticky bar. */
+  :root{--bar-h:60px}
+  section[id]{scroll-margin-top:var(--bar-h)}
   .bar{
-    position:absolute;top:0;left:0;right:0;z-index:10;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:22px clamp(20px,5vw,56px);
-    color:var(--ivory);
+    position:sticky;top:0;z-index:1100;   /* above anything the map module stacks */
+    height:var(--bar-h);
+    display:grid;
+    grid-template-columns:auto 1fr auto;   /* clock sits midway between logo and menu... */
+    grid-template-areas:"mark clock nav";
+    align-items:baseline;align-content:center;
+    column-gap:clamp(12px,2vw,28px);
+    padding:0 clamp(20px,5vw,56px);
+    background:var(--deep);color:var(--ivory);
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease;
   }
+  .bar.scrolled{border-bottom-color:var(--line-dark)}
   .bar .mark{
+    grid-area:mark;justify-self:start;
     font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
-    font-size:20px;letter-spacing:.02em;text-decoration:none;
+    font-size:20px;line-height:1.2;letter-spacing:.02em;text-decoration:none;white-space:nowrap;
   }
-  .bar nav{display:flex;gap:26px}
+  .bar nav{grid-area:nav;justify-self:end;display:flex;gap:clamp(14px,2.1vw,26px)}
   .bar nav a{
-    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    font-size:11px;line-height:1.6;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;
     text-decoration:none;color:var(--ivory-dim);
+    text-underline-offset:7px;text-decoration-thickness:1px;
   }
   .bar nav a:hover{color:var(--ivory)}
-  @media(max-width:640px){.bar nav{display:none}}
+  .bar nav a.on{color:var(--ivory);text-decoration:underline;text-decoration-color:var(--mustard)}
+
+  /* ---------- trip clock (lives in the bar) ---------- */
+  .clock{
+    grid-area:clock;justify-self:center;
+    display:flex;align-items:baseline;justify-content:center;
+    white-space:nowrap;line-height:1;color:var(--ivory);
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  }
+  .clock .cd{display:flex;align-items:baseline}
+  .clock .grp{display:inline-flex;align-items:baseline;gap:3px}
+  .clock .grp + .grp{margin-left:clamp(9px,1.2vw,15px)}
+  .clock .n{
+    display:inline-block;min-width:1.08em;text-align:right;
+    font-size:25px;font-variant-numeric:lining-nums tabular-nums;
+  }
+  .clock .l{
+    font-family:'Inter',sans-serif;font-style:normal;font-weight:500;
+    font-size:11px;letter-spacing:.1em;color:var(--ivory-dim);
+  }
+  .clock .day{display:inline-flex;align-items:baseline;gap:.28em}
+  .clock .day .dl{font-size:22px;color:var(--ivory-dim)}
+  .clock .day .n{min-width:1.08em;text-align:left;color:var(--mustard)}
+
+  /* ...and from 1100px up it is centred on the page itself */
+  @media (min-width:1100px){
+    .bar{grid-template-columns:1fr auto 1fr}
+  }
+
+  /* 700-899px: same single row, a little tighter so logo + clock + five links always fit */
+  @media (min-width:700px) and (max-width:899.98px){
+    .bar nav{gap:15px}
+    .bar nav a{font-size:10px;letter-spacing:.12em}
+    .clock .n{font-size:23px}
+    .clock .grp + .grp{margin-left:9px}
+  }
+
+  /* Phones: the clock is row 1, logo + menu are row 2. Whole bar stays 84px. */
+  @media (max-width:699.98px){
+    :root{--bar-h:84px}
+    .bar{
+      grid-template-columns:auto 1fr;
+      grid-template-areas:"clock clock" "mark nav";
+      grid-template-rows:36px 38px;
+      align-items:center;align-content:start;
+      column-gap:14px;
+      padding:4px 14px 5px;
+    }
+    .bar .mark{font-size:18px;align-self:center}
+    .bar nav{justify-self:end;width:100%;max-width:440px;justify-content:space-between;gap:0;align-self:stretch}
+    .bar nav a{
+      display:flex;align-items:center;min-height:36px;
+      padding:0 clamp(3px,1vw,7px);
+      font-size:clamp(9.5px,2.75vw,11px);letter-spacing:.09em;line-height:1;
+    }
+    .clock{align-self:center}
+    .clock .n{font-size:22px}
+    .clock .day .dl{font-size:20px}
+  }
 
   /* ---------- hero ---------- */
   .hero{
     background:var(--deep);color:var(--ivory);
-    min-height:100svh;
+    min-height:calc(100vh - var(--bar-h));
+    min-height:calc(100svh - var(--bar-h));
     display:flex;flex-direction:column;justify-content:center;
-    padding:110px clamp(20px,5vw,56px) 64px;
+    padding:clamp(44px,8vh,84px) clamp(20px,5vw,56px) clamp(52px,8vh,76px);
     position:relative;overflow:hidden;
   }
   .hero .eyebrow{
@@ -108,24 +184,25 @@
   }
   .hero .dates b{color:var(--ivory);font-weight:600}
 
-  /* ---------- countdown ---------- */
-  .count{
-    margin-top:clamp(36px,6vh,64px);
-    border-top:1px solid var(--line-dark);
-    padding-top:26px;
-    display:flex;flex-wrap:wrap;gap:clamp(22px,5vw,64px);
+  /* text left, small Java map right (>= 900px); the map is hidden below 900px */
+  .hero-inner{
+    width:100%;max-width:1480px;margin:0 auto;
+    display:grid;grid-template-columns:minmax(0,1fr);
+    align-items:center;gap:clamp(28px,4vw,64px);
   }
-  .count .unit{min-width:86px}
-  .count .num{
-    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
-    font-size:clamp(56px,8vw,104px);line-height:1;color:var(--ivory);
-    font-variant-numeric:tabular-nums;
+  .hero-text{min-width:0}
+  .hero-text:only-child{grid-column:1/-1}
+  .hero-map{display:none;min-width:0}
+  @media (min-width:900px){
+    .hero-inner{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}
+    .hero-map{display:block;align-self:center}
+    .hero-map:empty{display:none}
+    .hero-inner:has(> .hero-map:empty) .hero-text{grid-column:1/-1}
+    .hero h1{font-size:clamp(42px,5.2vw,84px)}
+    .hero-inner:has(> .hero-map:empty) h1,
+    .hero-text:only-child h1{font-size:clamp(44px,8.4vw,116px)}
   }
-  .count .lbl{
-    margin-top:6px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
-    color:var(--ivory-dim);
-  }
-  .count .num .tick{color:var(--jade)}
+  @media (max-width:899.98px){.hero-map{display:none!important}}
 
   /* ---------- stats strip ---------- */
   .stats{
@@ -336,10 +413,19 @@
 </head>
 <body>
 
-<header class="bar">
+<header class="bar" id="bar">
   <a class="mark" href="#top">3 × 3 × 3</a>
-  <nav>
+  <div class="clock" id="trip-clock" role="timer" aria-live="off" aria-label="Trip clock" title="Countdown to the start of the trip, then the day of the trip">
+    <div class="cd" id="clock-body">
+      <span class="grp"><span class="n">--</span><span class="l">d</span></span>
+      <span class="grp"><span class="n">--</span><span class="l">h</span></span>
+      <span class="grp"><span class="n">--</span><span class="l">m</span></span>
+      <span class="grp"><span class="n">--</span><span class="l">s</span></span>
+    </div>
+  </div>
+  <nav aria-label="Main">
     <a href="#route">Route</a>
+    <a href="#map">Map</a>
     <a href="#crew">Crew</a>
     <a href="#bike">The bike</a>
     <a href="#gallery">Gallery</a>
@@ -348,28 +434,37 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
-  <div class="eyebrow">India · Indonesia — October 2026</div>
-  <h1><em>Three dudes.</em><br>Three bikes.<br><span class="accent">Three weeks</span> of freedom.</h1>
-  <p class="lede">Three friends trade desks for saddles: the Golden Triangle of India — Delhi, Agra, Jaipur — then 1,213 km across Java on Yamaha NMax&nbsp;155s, from Jakarta to Banyuwangi, two volcanoes on the way, and a ferry to Denpasar at the finish.</p>
-
-  <div class="count" id="countdown" aria-label="Countdown to departure">
-    <div class="unit"><div class="num" id="cd-d">—</div><div class="lbl">Days</div></div>
-    <div class="unit"><div class="num" id="cd-h">—</div><div class="lbl">Hours</div></div>
-    <div class="unit"><div class="num" id="cd-m">—</div><div class="lbl">Minutes</div></div>
-    <div class="unit"><div class="num" id="cd-s">—</div><div class="lbl">Seconds</div></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">India · Indonesia — October 2026</div>
+      <h1><em>Three dudes.</em><br>Three bikes.<br><span class="accent">Three weeks</span> of freedom.</h1>
+      <p class="lede">Three friends trade desks for saddles: the Golden Triangle of India — Delhi, Agra, Jaipur — then 1,430 km across Java on Yamaha NMax&nbsp;155s, from Jakarta to Banyuwangi, two volcanoes on the way, and a ferry to Denpasar at the finish.</p>
+      <div class="dates">Wheels roll <b>1 — 22 October 2026</b></div>
+    </div>
+    <div class="hero-map" id="mini-map" data-trip-map="mini" role="region" aria-label="Map of the Java route"></div>
   </div>
-
-  <div class="dates">Wheels roll <b>1 — 21 October 2026</b></div>
 </section>
 
 <!-- ================= STATS ================= -->
 <div class="stats" role="list">
   <div class="cell" role="listitem"><div class="v">2</div><div class="k">Countries</div></div>
-  <div class="cell" role="listitem"><div class="v">2,112</div><div class="k">km overall</div></div>
-  <div class="cell" role="listitem"><div class="v">1,213</div><div class="k">km across Java</div></div>
+  <div class="cell" role="listitem"><div class="v">2,208</div><div class="k">km overall</div></div>
+  <div class="cell" role="listitem"><div class="v">1,430</div><div class="k">km across Java</div></div>
   <div class="cell" role="listitem"><div class="v">2</div><div class="k">Volcanoes</div></div>
   <div class="cell" role="listitem"><div class="v">3</div><div class="k">Riders</div></div>
 </div>
+
+<!-- ================= MAP ================= -->
+<section id="map">
+  <div class="shead">
+    <div class="no">— The map</div>
+    <h2>Two countries, one line</h2>
+    <p>The Golden Triangle by road, a night flight east, then Java end to end: every stop on one map.</p>
+  </div>
+  <div class="wrap">
+    <div id="trip-map" data-trip-map="full" role="region" aria-label="Interactive map of the whole trip"></div>
+  </div>
+</section>
 
 <!-- ================= ROUTE ================= -->
 <section id="route">
@@ -401,10 +496,11 @@
       </div>
       <ul class="stops">
         <li><span class="city">Jakarta</span><span class="note">pick up the bikes</span></li>
-        <li><span class="city">Bandung</span></li>
-        <li><span class="city">Tasikmalaya</span></li>
-        <li><span class="city">Purwokerto</span></li>
+        <li><span class="city">Cirebon</span></li>
+        <li><span class="city">Pekalongan</span><span class="note">the batik coast</span></li>
+        <li><span class="city">Semarang</span></li>
         <li><span class="city">Yogyakarta</span><span class="note">Prambanan</span></li>
+        <li><span class="city">Solo</span></li>
         <li><span class="city">Madiun</span></li>
         <li><span class="city">Malang</span></li>
         <li class="volcano"><span class="city">Cemoro Lawang</span><span class="note">Mount Bromo · sunrise</span></li>
@@ -506,32 +602,101 @@
 </footer>
 
 <script>
+/* Trip clock + header behaviour.
+   TO CHANGE THE DATES: edit START and LAST_DAY just below (month is 0-based: 9 = October). */
 (function(){
-  var target = new Date(2026, 9, 2, 0, 0, 0); // 2 Oct 2026, local time
-  var d=document.getElementById('cd-d'),
-      h=document.getElementById('cd-h'),
-      m=document.getElementById('cd-m'),
-      s=document.getElementById('cd-s');
-  function pad(n){return n<10?'0'+n:''+n}
-  function tick(){
-    var diff = target - new Date();
-    if(diff <= 0){
-      document.getElementById('countdown').innerHTML =
-        '<div class="unit"><div class="num"><em>On the road.</em></div></div>';
-      clearInterval(t);
-      return;
+  var START = new Date(2026, 9, 1);   // 1 Oct 2026, 00:00 in the visitor's LOCAL time = "Day 1"
+  var LAST_DAY = 22;                  // the clock never shows a day higher than this ("Day 22" forever)
+
+  /* Pure function: what should the clock show at moment `now`?
+     -> {mode:"countdown", days, hours, minutes, seconds}  before START
+     -> {mode:"day", day}                                  from START on (capped at LAST_DAY) */
+  function compute(now){
+    var diff = START.getTime() - now.getTime();
+    if (diff > 0){
+      var total = Math.ceil(diff / 1000);          // whole seconds left (rounded up, never shows 00:00:00 early)
+      return {
+        mode: 'countdown',
+        days: Math.floor(total / 86400),
+        hours: Math.floor(total % 86400 / 3600),
+        minutes: Math.floor(total % 3600 / 60),
+        seconds: total % 60
+      };
     }
-    var days = Math.floor(diff/86400000);
-    var hrs  = Math.floor(diff%86400000/3600000);
-    var min  = Math.floor(diff%3600000/60000);
-    var sec  = Math.floor(diff%60000/1000);
-    d.textContent = days;
-    h.textContent = pad(hrs);
-    m.textContent = pad(min);
-    s.textContent = pad(sec);
+    // calendar-date arithmetic (immune to DST shifts): local y/m/d of now vs local y/m/d of START
+    var dayNo = Math.round((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) -
+                            Date.UTC(START.getFullYear(), START.getMonth(), START.getDate())) / 86400000) + 1;
+    return {mode: 'day', day: Math.min(dayNo, LAST_DAY)};
+  }
+  window.TripClock = {START: START, LAST_DAY: LAST_DAY, compute: compute};
+
+  var body = document.getElementById('clock-body'), shown = '', nDays, nHrs, nMin, nSec, nDay;
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  function put(el, txt){ if (el.textContent !== txt) el.textContent = txt; }
+  function build(mode){            // swap the clock's markup only when the mode changes (not every second)
+    shown = mode;
+    if (mode === 'countdown'){
+      body.className = 'cd';
+      body.innerHTML = '<span class="grp"><span class="n"></span><span class="l">d</span></span>' +
+                       '<span class="grp"><span class="n"></span><span class="l">h</span></span>' +
+                       '<span class="grp"><span class="n"></span><span class="l">m</span></span>' +
+                       '<span class="grp"><span class="n"></span><span class="l">s</span></span>';
+      var n = body.querySelectorAll('.n');
+      nDays = n[0]; nHrs = n[1]; nMin = n[2]; nSec = n[3];
+    } else {
+      body.className = 'day';
+      body.innerHTML = '<span class="dl">Day</span> <span class="n"></span>';
+      nDay = body.querySelector('.n');
+    }
+  }
+  function render(st){
+    if (st.mode !== shown) build(st.mode);
+    if (st.mode === 'countdown'){
+      put(nDays, pad(st.days)); put(nHrs, pad(st.hours)); put(nMin, pad(st.minutes)); put(nSec, pad(st.seconds));
+    } else {
+      put(nDay, String(st.day));
+    }
+  }
+  var timer = 0;
+  function tick(){
+    var now = new Date(), st = compute(now), delay;
+    render(st);
+    if (st.mode === 'countdown'){
+      delay = (START.getTime() - now.getTime()) % 1000;   // next whole-second boundary
+      if (delay <= 0) delay += 1000;
+    } else {
+      delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());   // once a minute, so the day flips at local midnight
+    }
+    clearTimeout(timer);
+    timer = setTimeout(tick, delay + 15);
   }
   tick();
-  var t = setInterval(tick, 1000);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) tick(); });
+
+  /* Sticky bar: hairline appears once the page has scrolled */
+  var bar = document.getElementById('bar');
+  function onScroll(){ bar.classList.toggle('scrolled', (window.pageYOffset || document.documentElement.scrollTop) > 2); }
+  window.addEventListener('scroll', onScroll, {passive: true});
+  onScroll();
+
+  /* Highlight the menu link of the section currently in view */
+  if ('IntersectionObserver' in window){
+    var links = {}, active = null;
+    [].forEach.call(bar.querySelectorAll('nav a[href^="#"]'), function(a){ links[a.getAttribute('href').slice(1)] = a; });
+    function setActive(id){
+      if (id === active) return;
+      active = id;
+      for (var k in links){
+        links[k].classList.toggle('on', k === id);
+        if (k === id) links[k].setAttribute('aria-current', 'true'); else links[k].removeAttribute('aria-current');
+      }
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (!e.isIntersecting && e.target.id === active) setActive(null); });
+      entries.forEach(function(e){ if (e.isIntersecting) setActive(e.target.id); });
+    }, {rootMargin: '-45% 0px -50% 0px', threshold: 0});
+    for (var id in links){ var sec = document.getElementById(id); if (sec) io.observe(sec); }
+  }
 })();
 </script>
 

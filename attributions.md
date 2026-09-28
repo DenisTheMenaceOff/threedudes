@@ -35,3 +35,25 @@ Commons) and need no third-party attribution:
 ## Social-share & icons
 - `images/og-cover.jpg` — Open Graph share image, built from the Taj Mahal photo above (same CC BY-SA 4.0 attribution applies).
 - `images/favicon.svg`, `images/favicon-32.png`, `images/apple-touch-icon.png` — original site icon.
+
+## Map
+
+The interactive maps (`route-map.js`, `route-map.css`) are built from the following. The credit
+line in the corner of each map (Leaflet | OpenStreetMap contributors) must stay visible.
+
+| Part | What it is | Credit / licence |
+|------|------------|------------------|
+| Map data and map pictures ("tiles") | The standard OpenStreetMap map, served by OpenStreetMap's own tile server (`tile.openstreetmap.org`) and re-coloured in the visitor's browser to match the site. | (c) [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors. Data available under the [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Tiles are used under the [OSMF Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/) (light, interactive use; visible attribution). |
+| Map library | [Leaflet](https://leafletjs.com) 1.9.4, loaded from cdnjs with an integrity (SRI) check. | BSD-2-Clause. (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade, and contributors. [Licence text](https://github.com/Leaflet/Leaflet/blob/main/LICENSE). |
+| Road lines | The route lines follow real roads. Each leg was routed once, offline, with the public [OSRM](https://project-osrm.org) demo server and stored inside `route-map.js`; the live site makes no routing requests. | Routing software: OSRM, BSD-2-Clause. Road data: (c) OpenStreetMap contributors, ODbL 1.0 (the stored lines are a derived work of that data, credited here). |
+| Place coordinates | Stop coordinates were looked up in OpenStreetMap data (Nominatim) and checked by hand. | (c) OpenStreetMap contributors, ODbL 1.0. |
+
+Notes:
+
+- **CARTO basemaps are not used.** They were evaluated first, but CARTO now requires a personal
+  API key: without one its tile server returns a watermark tile reading "API KEY REQUIRED", and
+  its terms require credit to both OpenStreetMap and CARTO
+  (<https://carto.com/attributions>). If a CARTO key is ever added, change `TILES` in `route-map.js`
+  and add the CARTO credit next to the OpenStreetMap one.
+- The little round symbols on the map (coffee cup, volcano, palm tree, plane) are ordinary Unicode
+  emoji drawn by the visitor's device; no image files are involved.
