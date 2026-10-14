@@ -29,7 +29,13 @@ Use a code editor (VS Code) or ask Claude to make the edit. The most common edit
   (the clock stops on "Day 22"). Before START the header shows a countdown; from START on it shows "Day N".
 - **Uploading files:** on GitHub use "Add file" > "Upload files" > "choose your files" (not drag-and-drop,
   and never copy-paste file contents into the GitHub editor - that breaks special characters).
-- **The "follow along" / Polarsteps link:** it lives in the footer of `index.html`.
+- **Kilometres:** all distances on the site are real road distances measured with OpenStreetMap routing
+  (scooter profile, no toll roads for the Java bike legs; car for India), not the numbers from the planning table.
+  They are rounded. If the route changes, tell Claude - the totals appear in `index.html`, `route-map.js` and the guide.
+- **The photo album link:** the live Google Photos album (https://photos.app.goo.gl/Coris9MN73NwQEiH7) is linked from
+  five places in `index.html` (menu "Photos", the hero button, the map section, the gallery button and the footer)
+  and from the guide page. To point them at a different album, search each file for `photos.app.goo.gl`
+  and replace the address everywhere it appears.
 
 ## Publishing an update (GitHub Pages)
 

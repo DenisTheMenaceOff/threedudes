@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Three Dudes. Three Bikes. — India &amp; Indonesia, October 2026</title>
-<meta name="description" content="Three friends, three bikes, three weeks: India's Golden Triangle, then 1,213 km across Java on Yamaha NMax 155s — two volcanoes and a ferry to Bali. October 2026.">
+<meta name="description" content="Three friends, three bikes, three weeks: India's Golden Triangle, then 1,371 km across Java on Yamaha NMax 155s — two volcanoes and a ferry to Bali. October 2026.">
 
 <!-- Open Graph / social share (WhatsApp, Telegram, iMessage) -->
 <!-- NOTE: og:url and og:image must be ABSOLUTE URLs. They are updated to the live site URL at deploy time. -->
@@ -12,13 +12,15 @@
 <meta property="og:title" content="Three Dudes. Three Bikes. Three Weeks of Freedom.">
 <meta property="og:description" content="India's Golden Triangle, then Java end to end on Yamaha NMax 155s — two volcanoes and a ferry to Bali. October 2026.">
 <meta property="og:url" content="https://threedudes.travel/">
-<meta property="og:image" content="https://threedudes.travel/images/og-cover.jpg">
+<meta property="og:image" content="https://threedudes.travel/images/og-bromo.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sunrise over the Bromo and Semeru volcanoes, Java">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Three Dudes. Three Bikes. Three Weeks of Freedom.">
 <meta name="twitter:description" content="India's Golden Triangle, then Java end to end on Yamaha NMax 155s — two volcanoes and a ferry to Bali. October 2026.">
-<meta name="twitter:image" content="https://threedudes.travel/images/og-cover.jpg">
+<meta name="twitter:image" content="https://threedudes.travel/images/og-bromo.jpg">
+<meta name="twitter:image:alt" content="Sunrise over the Bromo and Semeru volcanoes, Java">
 
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
@@ -409,6 +411,26 @@
   }
   footer .guide:hover{color:var(--ivory-dim)}
   footer .fine{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-dim)}
+
+  /* ---------- photo album links (Google Photos album, opens in a new tab) ---------- */
+  .btn-photos{
+    display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:13px 24px;
+    border:1px solid var(--mustard);border-radius:999px;color:var(--mustard);
+    font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+    transition:background .2s,color .2s;
+  }
+  .btn-photos .live{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(202,60,54,.6);animation:livepulse 2s infinite}
+  @keyframes livepulse{70%{box-shadow:0 0 0 9px rgba(202,60,54,0)}100%{box-shadow:0 0 0 0 rgba(202,60,54,0)}}
+  .btn-photos:hover{background:var(--mustard);color:var(--deep)}
+  .btn-photos.on-light{color:var(--deep);border-color:var(--deep)}
+  .btn-photos.on-light:hover{background:var(--deep);color:var(--ivory)}
+  .bar nav a.photos{color:var(--mustard)}
+  .bar nav a.photos:hover{color:var(--ivory)}
+  @media (max-width:899.98px){.bar nav a.photos{display:none}}  /* phones/tablets: the hero button covers it */
+  .gal-cta{max-width:1100px;margin:34px auto 0;text-align:center}
+  .gal-cta .btn-photos{margin-top:0}
+  .shead p a{color:inherit;text-underline-offset:3px}
+  footer .flinks{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
 </style>
 </head>
 <body>
@@ -429,6 +451,7 @@
     <a href="#crew">Crew</a>
     <a href="#bike">The bike</a>
     <a href="#gallery">Gallery</a>
+    <a class="photos" href="https://photos.app.goo.gl/Coris9MN73NwQEiH7" target="_blank" rel="noopener">Photos ↗</a>
   </nav>
 </header>
 
@@ -438,8 +461,9 @@
     <div class="hero-text">
       <div class="eyebrow">India · Indonesia — October 2026</div>
       <h1><em>Three dudes.</em><br>Three bikes.<br><span class="accent">Three weeks</span> of freedom.</h1>
-      <p class="lede">Three friends trade desks for saddles: the Golden Triangle of India — Delhi, Agra, Jaipur — then 1,213 km across Java on Yamaha NMax&nbsp;155s, from Jakarta to Banyuwangi, two volcanoes on the way, and a ferry to Denpasar at the finish.</p>
+      <p class="lede">Three friends trade desks for saddles: the Golden Triangle of India — Delhi, Agra, Jaipur — then 1,371 km across Java on Yamaha NMax&nbsp;155s, from Jakarta to Banyuwangi, two volcanoes on the way, and a ferry to Denpasar at the finish.</p>
       <div class="dates">Wheels roll <b>1 — 22 October 2026</b></div>
+      <a class="btn-photos" href="https://photos.app.goo.gl/Coris9MN73NwQEiH7" target="_blank" rel="noopener"><span class="live" aria-hidden="true"></span>Follow the ride in photos →</a>
     </div>
     <div class="hero-map" id="mini-map" data-trip-map="mini" role="region" aria-label="Map of the Java route"></div>
   </div>
@@ -448,8 +472,8 @@
 <!-- ================= STATS ================= -->
 <div class="stats" role="list">
   <div class="cell" role="listitem"><div class="v">2</div><div class="k">Countries</div></div>
-  <div class="cell" role="listitem"><div class="v">2,112</div><div class="k">km overall</div></div>
-  <div class="cell" role="listitem"><div class="v">1,213</div><div class="k">km across Java</div></div>
+  <div class="cell" role="listitem"><div class="v">2,209</div><div class="k">km overall</div></div>
+  <div class="cell" role="listitem"><div class="v">1,371</div><div class="k">km across Java</div></div>
   <div class="cell" role="listitem"><div class="v">2</div><div class="k">Volcanoes</div></div>
   <div class="cell" role="listitem"><div class="v">3</div><div class="k">Riders</div></div>
 </div>
@@ -459,7 +483,7 @@
   <div class="shead">
     <div class="no">— The map</div>
     <h2>Two countries, one line</h2>
-    <p>The Golden Triangle by road, a night flight east, then Java end to end: every stop on one map.</p>
+    <p>The Golden Triangle by road, a night flight east, then Java end to end: every stop on one map. <a href="https://photos.app.goo.gl/Coris9MN73NwQEiH7" target="_blank" rel="noopener">Photos from the road →</a></p>
   </div>
   <div class="wrap">
     <div id="trip-map" data-trip-map="full" role="region" aria-label="Interactive map of the whole trip"></div>
@@ -502,7 +526,8 @@
         <li><span class="city">Yogyakarta</span><span class="note">Prambanan</span></li>
         <li><span class="city">Madiun</span></li>
         <li><span class="city">Malang</span></li>
-        <li class="volcano"><span class="city">Cemoro Lawang</span><span class="note">Mount Bromo · sunrise</span></li>
+        <li class="volcano"><span class="city">Bromo</span><span class="note">Mount Bromo · sunrise</span></li>
+        <li><span class="city">Jember</span></li>
         <li class="volcano"><span class="city">Banyuwangi</span><span class="note">Kawah Ijen · blue fire</span></li>
       </ul>
       <div class="transit"><span class="glyph">⚓</span> Ferry to Denpasar · the finish line</div>
@@ -589,13 +614,17 @@
       <span class="t">Bali</span><span class="s">The finish</span>
     </figure>
   </div>
-  <p class="gal-note">Photographs via Wikimedia Commons (CC&nbsp;BY-SA) — see <a href="attributions.md" style="color:inherit;text-decoration:underline">attributions</a>. Our own shots replace these during the ride.</p>
+  <div class="gal-cta"><a class="btn-photos on-light" href="https://photos.app.goo.gl/Coris9MN73NwQEiH7" target="_blank" rel="noopener"><span class="live" aria-hidden="true"></span>See our own photos from the road →</a></div>
+  <p class="gal-note">The six frames above are Wikimedia Commons photographs (CC&nbsp;BY-SA) — see <a href="attributions.md" style="color:inherit;text-decoration:underline">attributions</a>. Our own shots from the road are in the live album.</p>
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
-    <a class="guide" href="indonesia_roadtrip.html">Read the full day-by-day guide →</a>
+    <div class="flinks">
+      <a class="guide" href="indonesia_roadtrip.html">Read the full day-by-day guide →</a>
+      <a class="guide" href="https://photos.app.goo.gl/Coris9MN73NwQEiH7" target="_blank" rel="noopener">Follow the ride in photos →</a>
+    </div>
     <div class="fine">Three dudes · October 2026 · Delhi — Bali</div>
   </div>
 </footer>

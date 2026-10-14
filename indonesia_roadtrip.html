@@ -21,6 +21,9 @@ body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);lin
 .nav a{color:var(--ivory);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;opacity:0.65;transition:opacity 0.2s,color 0.2s;flex-shrink:0;}
 .nav a:hover,.nav a.active{opacity:1;color:var(--gold);}
 .nav a.brand{color:var(--gold);opacity:1;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;text-transform:none;letter-spacing:0;margin-right:auto;}
+.nav a.nav-photos{color:var(--gold);opacity:1;font-weight:600;border:1px solid var(--gold);border-radius:999px;padding:6px 14px;transition:background 0.2s,color 0.2s;}
+.nav a.nav-photos::after{content:" ↗";}
+.nav a.nav-photos:hover{background:var(--gold);color:var(--ink);}
 
 section{min-height:100vh;padding:80px 0;position:relative;}
 .container{max-width:1300px;margin:0 auto;padding:0 48px;}
@@ -118,7 +121,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
 .note-text b{color:var(--gold);}
 
 /* GEAR */
-.gear{background:var(--paper-warm);}
+.gear{background:var(--paper);}
 .gear .section-eyebrow::before,.gear .section-eyebrow{border-color:var(--jade);}
 .gear .section-eyebrow{color:var(--jade);}
 .gear .section-eyebrow::before{background:var(--jade);}
@@ -133,7 +136,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
 .gear-note{font-size:12.5px;color:var(--slate);line-height:1.5;}
 
 /* HOTELS */
-.hotels{background:var(--paper);}
+.hotels{background:var(--paper-warm);}
 .hotels-block{margin-bottom:44px;}
 .hotels-subtitle{color:var(--lacquer);font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
 .hotels-subtitle::before{content:"";width:20px;height:2px;background:var(--lacquer);}
@@ -155,7 +158,11 @@ section{min-height:100vh;padding:80px 0;position:relative;}
 .final-seal{position:absolute;top:50%;right:48px;transform:translateY(-50%);width:90px;height:90px;background:var(--lacquer);color:var(--ivory);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px;font-weight:700;border:2px solid rgba(245,237,216,0.3);z-index:3;}
 .final-content{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:0 48px;width:100%;}
 .final-eyebrow{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:18px;}
-.final-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(32px,4.5vw,52px);line-height:1.1;color:var(--ivory);margin-bottom:60px;max-width:880px;}
+.final-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(32px,4.5vw,52px);line-height:1.1;color:var(--ivory);margin-bottom:36px;max-width:880px;}
+.final-photos{display:flex;width:fit-content;align-items:center;gap:10px;padding:14px 28px;border:1.5px solid var(--gold);border-radius:999px;color:var(--gold);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:48px;transition:background 0.2s,color 0.2s;}
+.final-photos::after{content:"→";font-size:16px;transition:transform 0.2s;}
+.final-photos:hover{background:var(--gold);color:var(--ink);}
+.final-photos:hover::after{transform:translateX(4px);}
 .final-bye{color:var(--gold);font-size:13px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;}
 
 /* RESPONSIVE */
@@ -175,6 +182,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
   .final-seal{right:24px;width:60px;height:60px;font-size:22px;}
   .phase-div .container{flex-direction:column;gap:12px;}
   .phase-num{font-size:52px;}
+  .final-photos{font-size:12px;letter-spacing:0.12em;padding:12px 22px;}
 }
 </style>
 </head>
@@ -193,10 +201,12 @@ section{min-height:100vh;padding:80px 0;position:relative;}
     <a href="#d09">Bandung</a>
     <a href="#d12">Yogyakarta</a>
     <a href="#d16">Bromo</a>
+    <a href="#d17">Jember</a>
     <a href="#d18">Ijen</a>
     <a href="#bali">Bali</a>
     <a href="#gear">Gear</a>
     <a href="#hotels">Hotels</a>
+    <a href="https://photos.app.goo.gl/Coris9MN73NwQEiH7" class="nav-photos" target="_blank" rel="noopener">Photos</a>
   </div>
 </nav>
 
@@ -217,7 +227,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
     <h1>Three Dudes.<br>Three Bikes.</h1>
     <h2>Three weeks of freedom</h2>
     <div class="cover-route">Delhi · Jakarta · Java · Bali</div>
-    <div class="cover-meta">2–20 October 2026 · 19 days · 2 112 km on the road · Yamaha NMax 155</div>
+    <div class="cover-meta">2–20 October 2026 · 19 days · 2 209 km on the road · Yamaha NMax 155</div>
   </div>
   <div class="scroll-hint">Scroll</div>
 </section>
@@ -226,7 +236,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
 <section class="overview" id="overview">
   <div class="container">
     <div class="section-eyebrow">Route overview</div>
-    <h2 class="section-title">Two countries, one island, 1 213 km<br>ridden across Java end to end</h2>
+    <h2 class="section-title">Two countries, one island, 1 371 km<br>ridden across Java end to end</h2>
 
     <div class="timeline">
       <div class="timeline-bar"></div>
@@ -264,7 +274,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         <div class="stop">
           <div class="stop-date above">16–19 Oct</div>
           <div class="stop-dot jade"></div>
-          <div class="stop-place">Bromo · Ijen</div>
+          <div class="stop-place">Bromo · Jember · Ijen</div>
           <div class="stop-sub">volcanoes</div>
         </div>
         <div class="stop">
@@ -285,15 +295,15 @@ section{min-height:100vh;padding:80px 0;position:relative;}
       </div>
       <div class="ovw-card jade">
         <div class="ovw-card-title">Road stats</div>
-        <div class="ovw-line"><div class="ovw-line-label">Total Java distance</div><div class="ovw-line-val">1 213 km · 14 riding days</div></div>
+        <div class="ovw-line"><div class="ovw-line-label">Total Java distance</div><div class="ovw-line-val">1 371 km · 9 riding days</div></div>
         <div class="ovw-line"><div class="ovw-line-label">Average per day</div><div class="ovw-line-val">~150 km — very manageable</div></div>
-        <div class="ovw-line"><div class="ovw-line-label">Longest single day</div><div class="ovw-line-val">Bromo → Banyuwangi · 229 km</div></div>
+        <div class="ovw-line"><div class="ovw-line-label">Longest single day</div><div class="ovw-line-val">Madiun → Malang · 201 km</div></div>
       </div>
       <div class="ovw-card">
         <div class="ovw-card-title">Highlights</div>
         <div class="ovw-line"><div class="ovw-line-label">Taj Mahal at golden hour</div><div class="ovw-line-val">Agra · 4 October</div></div>
         <div class="ovw-line"><div class="ovw-line-label">Borobudur sunrise</div><div class="ovw-line-val">Yogyakarta · 13 October</div></div>
-        <div class="ovw-line"><div class="ovw-line-label">Bromo volcanic sunrise</div><div class="ovw-line-val">Cemorolawang · 17 October</div></div>
+        <div class="ovw-line"><div class="ovw-line-label">Bromo volcanic sunrise</div><div class="ovw-line-val">Penanjakan · 17 October</div></div>
         <div class="ovw-line"><div class="ovw-line-label">Kawah Ijen blue fire</div><div class="ovw-line-val">pre-dawn · 19 October</div></div>
       </div>
     </div>
@@ -307,7 +317,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
     <div class="phase-info">
       <div class="phase-label">Phase one · 2–6 October</div>
       <div class="phase-title">India — Delhi, Agra, Jaipur</div>
-      <div class="phase-sub">Mughal empire, royal forts, the Taj · 758 km by road · fly Delhi → Jakarta 6 Oct 21:55, land 7 Oct 08:45</div>
+      <div class="phase-sub">Mughal empire, royal forts, the Taj · 698 km by road · fly Delhi → Jakarta 6 Oct 21:55, land 7 Oct 08:45</div>
     </div>
   </div>
 </section>
@@ -334,7 +344,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
           <div class="sch-row"><div class="sch-time">3 Oct AM</div><div class="sch-act"><b>Red Fort</b> — open before the crowds. 2.5 km of red sandstone walls, Diwan-i-Khas in white marble.</div></div>
           <div class="sch-row"><div class="sch-time">Midday</div><div class="sch-act"><b>Qutub Minar</b> — 72 m minaret, built 1193. The first monument of Islamic architecture in India.</div></div>
           <div class="sch-row"><div class="sch-time">Afternoon</div><div class="sch-act"><b>Humayun's Tomb</b> — prototype of the Taj Mahal, UNESCO. Garden-tomb in red sandstone and white marble.</div></div>
-          <div class="sch-row"><div class="sch-time">Evening</div><div class="sch-act">India Gate promenade, street food at Connaught Place. Early rest — Sunday is a 232 km drive day.</div></div>
+          <div class="sch-row"><div class="sch-time">Evening</div><div class="sch-act">India Gate promenade, street food at Connaught Place. Early rest — Sunday is a 204 km drive day.</div></div>
         </div>
         <div class="places">
           <article class="place">
@@ -366,14 +376,14 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Agra</div>
-          <div class="day-aside-sub">1 night · 232 km from Delhi</div>
+          <div class="day-aside-sub">1 night · 204 km from Delhi</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Drive · Taj Mahal</div>
         <h3 class="day-main-title">The thing you can't prepare for</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Delhi. 232 km, ~5 hours on the Yamuna Expressway, smooth road — allow for a stop or two.</div></div>
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Delhi. 204 km, ~5 hours on the Yamuna Expressway, smooth road — allow for a stop or two.</div></div>
           <div class="sch-row"><div class="sch-time">14:00</div><div class="sch-act">Check in, lunch near Taj Ganj.</div></div>
           <div class="sch-row"><div class="sch-time">15:00</div><div class="sch-act"><b>Taj Mahal</b> — afternoon golden light on white marble. The classic shot: reflecting pool, straight ahead.</div></div>
           <div class="sch-row"><div class="sch-time">17:30</div><div class="sch-act"><b>Fatehpur Sikri</b> — 40 km away. Abandoned Mughal city, 1571. The Buland Darwaza gate: 54 m, tallest mosque gateway in the world.</div></div>
@@ -409,19 +419,19 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Jaipur</div>
-          <div class="day-aside-sub">1 night · 239 km from Agra · next: 287 km back to Delhi</div>
+          <div class="day-aside-sub">1 night · 235 km from Agra · next: 259 km back to Delhi</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">The Pink City</div>
         <h3 class="day-main-title">Amber Fort, mirrors, and a palace of a thousand windows</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Agra. NH 21 highway, 239 km, ~5 hours plus stops.</div></div>
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Agra. NH 21 highway, 235 km, ~5 hours plus stops.</div></div>
           <div class="sch-row"><div class="sch-time">14:30</div><div class="sch-act">Arrive Jaipur, check in.</div></div>
           <div class="sch-row"><div class="sch-time">15:30</div><div class="sch-act"><b>Amber Fort</b> — Rajput hill fort above Maota Lake. <b>Sheesh Mahal</b> inside: thousands of mirror fragments on ceiling and walls.</div></div>
           <div class="sch-row"><div class="sch-time">17:30</div><div class="sch-act"><b>Hawa Mahal</b> — 953 latticed windows, 1799. Best photographed from the street opposite, at sunset.</div></div>
           <div class="sch-row"><div class="sch-time">20:00</div><div class="sch-act">Old City for dinner — dal baati churma, laal maas. Early night — tomorrow is a long drive.</div></div>
-          <div class="sch-row"><div class="sch-time">6 Oct</div><div class="sch-act">08:00 depart Jaipur, 287 km back to Delhi (arrive ~17:00, allow for stops and city traffic), then straight to the airport. Flight Delhi → Jakarta departs 21:55 and lands 7 Oct at 08:45.</div></div>
+          <div class="sch-row"><div class="sch-time">6 Oct</div><div class="sch-act">08:00 depart Jaipur, 259 km back to Delhi (arrive ~17:00, allow for stops and city traffic), then straight to the airport. Flight Delhi → Jakarta departs 21:55 and lands 7 Oct at 08:45.</div></div>
         </div>
         <div class="places">
           <article class="place">
@@ -448,8 +458,8 @@ section{min-height:100vh;padding:80px 0;position:relative;}
     <div class="phase-num">II</div>
     <div class="phase-info">
       <div class="phase-label">Phase two · 7–20 October</div>
-      <div class="phase-title">Java Road Trip — 1 213 km · 9 stops</div>
-      <div class="phase-sub">Jakarta → Bandung → Tasikmalaya → Purwokerto → Yogyakarta → Madiun → Malang → Bromo → Banyuwangi · Yamaha NMax 155</div>
+      <div class="phase-title">Java Road Trip — 1 371 km · 10 stops</div>
+      <div class="phase-sub">Jakarta → Bandung → Tasikmalaya → Purwokerto → Yogyakarta → Madiun → Malang → Bromo → Jember → Banyuwangi · Yamaha NMax 155</div>
     </div>
   </div>
 </section>
@@ -477,7 +487,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
           <div class="sch-row"><div class="sch-time">12:00</div><div class="sch-act">Check in. First Indonesian lunch: nasi goreng, soto ayam.</div></div>
           <div class="sch-row"><div class="sch-time">14:00</div><div class="sch-act"><b>Kota Tua</b> — 17th century Dutch colonial quarter. Fatahillah Square, wayang museum, batavia café.</div></div>
           <div class="sch-row"><div class="sch-time">17:00</div><div class="sch-act"><b>Monas</b> at sunset — 132 m national monument. Underground museum of Indonesian independence.</div></div>
-          <div class="sch-row"><div class="sch-time">8 Oct</div><div class="sch-act">Istiqlal Mosque (Southeast Asia's largest), Glodok Chinatown. Prep the bikes for tomorrow's ride to Bandung (Friday 9 Oct, 165 km).</div></div>
+          <div class="sch-row"><div class="sch-time">8 Oct</div><div class="sch-act">Istiqlal Mosque (Southeast Asia's largest), Glodok Chinatown. Prep the bikes for tomorrow's ride to Bandung (Friday 9 Oct, 177 km).</div></div>
         </div>
         <div class="places">
           <article class="place">
@@ -513,14 +523,14 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Bandung</div>
-          <div class="day-aside-sub">1 night · 165 km from Jakarta · 08:00–15:30</div>
+          <div class="day-aside-sub">1 night · 177 km from Jakarta · 08:00–15:30</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Tea hills · Highlands · Colonial "Paris of Java"</div>
         <h3 class="day-main-title">Cooler air, Art Deco streets, a government building shaped like a satay skewer</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Jakarta. South through Bogor and up into the Puncak foothills — 165 km, about 7 hours with stops. The longest stretch so far, mostly for traffic, not distance.</div></div>
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Jakarta. South through Bogor and up into the Puncak foothills — 177 km, about 7 hours with stops. The longest stretch so far, mostly for traffic, not distance.</div></div>
           <div class="sch-row"><div class="sch-time">10:30</div><div class="sch-act"><b>Gunung Mas Tea Plantation</b> — just below the top of Puncak Pass, right on the road. Tea stop #1 of two: walk the rows, drink a cup at the source. About an hour.</div></div>
           <div class="sch-row"><div class="sch-time">11:45</div><div class="sch-act"><b>Telaga Warna</b> — the small "coloured lake" just behind the tea hill at the top of the pass. 30–45 minutes.</div></div>
           <div class="sch-row"><div class="sch-time">13:00</div><div class="sch-act">Lunch on the far side of the pass, then down through Cianjur toward Bandung.</div></div>
@@ -575,18 +585,18 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Tasikmalaya → Purwokerto</div>
-          <div class="day-aside-sub">1 + 1 nights · 110 + 144 km · crafts and a hidden village</div>
+          <div class="day-aside-sub">1 + 1 nights · 122 + 152 km · crafts and a hidden village</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Sundanese crafts · Volcano gateway</div>
         <h3 class="day-main-title">A village that stopped the clock, and a mountain that once stopped a jumbo jet</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">10 Oct</div><div class="sch-act">08:00 Depart Bandung → Tasikmalaya (110 km, ~5h). The road runs Bandung → Garut → Kampung Naga → Tasikmalaya.</div></div>
+          <div class="sch-row"><div class="sch-time">10 Oct</div><div class="sch-act">08:00 Depart Bandung → Tasikmalaya (122 km, ~5h). The road runs Bandung → Garut → Kampung Naga → Tasikmalaya.</div></div>
           <div class="sch-row"><div class="sch-time">~11:30</div><div class="sch-act"><b>Kampung Naga</b> — a traditional Sundanese hamlet right on the Garut–Tasikmalaya road, about 25 km past Garut and 30 km short of Tasikmalaya. About a 1 km walk down ~400 steps into the valley; budget an hour.</div></div>
           <div class="sch-row"><div class="sch-time">~14:00</div><div class="sch-act">Arrive Tasikmalaya. Check in, rest.</div></div>
           <div class="sch-row"><div class="sch-time">Evening</div><div class="sch-act">Tasikmalaya town: look for <b>payung geulis</b> workshops — the hand-painted umbrellas the city is known for.</div></div>
-          <div class="sch-row"><div class="sch-time">11 Oct</div><div class="sch-act">08:00 Depart for Purwokerto (144 km, ~5h). Gateway to Mount Slamet — Central Java's highest volcano.</div></div>
+          <div class="sch-row"><div class="sch-time">11 Oct</div><div class="sch-act">08:00 Depart for Purwokerto (152 km, ~5h). Gateway to Mount Slamet — Central Java's highest volcano.</div></div>
           <div class="sch-row"><div class="sch-time">Evening</div><div class="sch-act">Quiet town, early night. Dinner: mendoan — Banyumas-style fried tempeh, eaten half-cooked with chili soy.</div></div>
           <div class="sch-row"><div class="sch-time">12 Oct</div><div class="sch-act">Optional, before you leave for Yogyakarta: an early-morning detour to <b>Baturraden</b> on the slopes of Mount Slamet (see the note below). Adds about an hour.</div></div>
         </div>
@@ -628,14 +638,14 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Yogyakarta</div>
-          <div class="day-aside-sub">2 nights · 165 km from Purwokerto · cultural heart of Java</div>
+          <div class="day-aside-sub">2 nights · 171 km from Purwokerto · cultural heart of Java</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Java's soul</div>
         <h3 class="day-main-title">The 9th century and the 21st century, two kilometres apart</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Purwokerto. 165 km, arrive by ~14:00 (nearer 15:00 if you added Baturraden). Check in near Malioboro.</div></div>
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Purwokerto. 171 km, arrive by ~14:00 (nearer 15:00 if you added Baturraden). Check in near Malioboro.</div></div>
           <div class="sch-row"><div class="sch-time">15:30</div><div class="sch-act"><b>Prambanan</b> — 9th century Hindu temple compound. 240 temples total, central Shiva tower 47 m. Stay for sunset behind the spires.</div></div>
           <div class="sch-row"><div class="sch-time">04:00</div><div class="sch-act">Day 2 (13 Oct): pre-dawn departure for <b>Borobudur sunrise</b>. 42 km west. Platform 9 at 05:30 — the single most spectacular moment of the trip.</div></div>
           <div class="sch-row"><div class="sch-time">10:00</div><div class="sch-act">Return. <b>Kraton Yogyakarta</b> — living royal palace. Gamelan instruments, court regalia, the sultan still lives here.</div></div>
@@ -684,24 +694,37 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Madiun · Malang</div>
-          <div class="day-aside-sub">2 nights · 120 + 169 km · east across Java</div>
+          <div class="day-aside-sub">2 nights · 177 + 201 km · east across Java</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Pushing east</div>
         <h3 class="day-main-title">Two quiet transit days before the volcanoes begin</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">14 Oct</div><div class="sch-act">08:00 Depart Yogyakarta → Madiun (120 km, ~6h). Arrive by 14:00. Quiet city, easy evening. The road passes through Solo — an optional short break there (see the note below).</div></div>
-          <div class="sch-row"><div class="sch-time">Evening</div><div class="sch-act">Dinner: pecel madiun — peanut sauce rice plate, the local specialty.</div></div>
-          <div class="sch-row"><div class="sch-time">15 Oct</div><div class="sch-act">08:00 Depart Madiun → Malang (169 km, ~6h) — the longest riding day so far. Arrive by 14:00; Kediri and Batu on the way are optional and would push that later.</div></div>
-          <div class="sch-row"><div class="sch-time">Afternoon</div><div class="sch-act"><b>Singosari Temple</b> before dark — a short ride north of the city.</div></div>
+          <div class="sch-row"><div class="sch-time">14 Oct</div><div class="sch-act">08:00 Depart Yogyakarta → Madiun (177 km, ~6h). Arrive around 15:00–16:00. The road passes through Solo — an optional short break there (see the note below).</div></div>
+          <div class="sch-row"><div class="sch-time">Evening</div><div class="sch-act">Stroll <b>Jalan Pahlawan</b>, the city's main street. Dinner: pecel madiun — peanut sauce rice plate, the local specialty.</div></div>
+          <div class="sch-row"><div class="sch-time">15 Oct</div><div class="sch-act">08:00 Depart Madiun → Malang (201 km, ~6h) — a second long day in a row. Arrive around 15:00; Kediri and Batu on the way are optional and would push that later.</div></div>
+          <div class="sch-row"><div class="sch-time">16:00</div><div class="sch-act"><b>Singosari Temple</b> before dark — a short ride north of the city. If the day has run late, skip it and go straight to Kayutangan.</div></div>
+          <div class="sch-row"><div class="sch-time">18:00</div><div class="sch-act"><b>Kayutangan</b> — Malang's old colonial shopping street, best at dusk. Dinner nearby, then an early night.</div></div>
         </div>
         <div class="places">
+          <article class="place">
+            <h4 class="place-name">Jalan Pahlawan, Madiun</h4>
+            <p class="place-desc">Madiun's central street, a straight axis of about 1.3 km running from the railway-station junction in the north to the Tugu crossroads in the south. In recent years the city has reworked part of it as the Pahlawan Street Center: wide pavements, shade trees, cafés, snack stalls and photo spots, which locals sometimes call Madiun's answer to Malioboro. Madiun is also a railway town — the INKA train works are based here.</p>
+            <div class="place-tip">Walk it after check-in. The town square (alun-alun) is a short stroll away and fills with food stalls after dark — stall hours vary, so check locally</div>
+            <a class="photo-btn" href="https://www.google.com/search?q=Jalan+Pahlawan+Madiun+Pahlawan+Street+Center&tbm=isch" target="_blank" rel="noopener">See photos</a>
+          </article>
           <article class="place jade">
             <h4 class="place-name">Singosari Temple, Malang</h4>
             <p class="place-desc">13th century funerary temple of King Kertanegara — one of the finest surviving monuments of the Singosari kingdom. Built in East Javanese style with fine andesite carvings. Notably unfinished: the workers simply stopped one day in 1292 when the kingdom collapsed. The scaffolding marks still show on the upper blocks. Rarely visited. Completely free.</p>
             <div class="place-tip">Coban Rondo waterfall (30 km away) is a half-day loop for a longer stay — with the 08:00 start tomorrow, keep Singosari as the one stop</div>
             <a class="photo-btn jade-btn" href="https://www.google.com/search?q=Singosari+Temple+Malang+East+Java&tbm=isch" target="_blank" rel="noopener">See photos</a>
+          </article>
+          <article class="place jade">
+            <h4 class="place-name">Kayutangan Heritage, Malang</h4>
+            <p class="place-desc">Kayutangan — today's Jalan Basuki Rahmat — was Malang's main colonial shopping street, leading toward the old town square. Under the Dutch it was the commercial heart of the city; many surviving shopfronts date from the 1930s and 40s in the boxy "Nieuwe Bouwen" style, and pre-war landmarks such as the former Javasche Bank building (1916) and the neo-Gothic Sacred Heart church (1905) still stand. The district is recognised as a heritage area, but it is a working city street, not a museum: modern shops and billboards sit right beside the old facades.</p>
+            <div class="place-tip">Walk it at dusk, when the shopfronts light up and the heat eases — and mind the traffic, it is still a busy road</div>
+            <a class="photo-btn jade-btn" href="https://www.google.com/search?q=Kayutangan+Heritage+Malang+colonial+street&tbm=isch" target="_blank" rel="noopener">See photos</a>
           </article>
           <article class="place">
             <h4 class="place-name">Ijen Boulevard, Malang</h4>
@@ -712,7 +735,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div class="note-block">
           <div class="note-eyebrow">On the road · optional breaks</div>
-          <p class="note-text"><b>14 Oct — Solo (Surakarta).</b> The road east passes straight through the city. <b>Kraton Surakarta</b>, the palace of the Susuhunan of Surakarta, and the <b>Pasar Klewer</b> batik and textile market (Central Java's largest) are both right in the centre, so an hour or so there makes an easy short break — plan on reaching Madiun around 15:30 instead of 14:00. <b>15 Oct — Kediri and Batu.</b> The road to Malang passes near Kediri, close to <b>Gunung Kelud</b> (an active volcano on the Kediri–Blitar–Malang border, last in major eruption in February 2014 — check current access before making the trip), and near the hill town of Batu, where <b>Jatim Park</b> and other family-style attractions are. Both are strictly optional, and Batu especially would mean arriving in Malang later.</p>
+          <p class="note-text"><b>14 Oct — Solo (Surakarta).</b> The road east passes straight through the city. <b>Kraton Surakarta</b>, the palace of the Susuhunan of Surakarta, and the <b>Pasar Klewer</b> batik and textile market (Central Java's largest) are both right in the centre, so an hour or so there makes an easy short break — plan on reaching Madiun nearer 16:00–17:00 instead of 15:00–16:00. <b>15 Oct — Kediri and Batu.</b> The road to Malang passes near Kediri, close to <b>Gunung Kelud</b> (an active volcano on the Kediri–Blitar–Malang border, last in major eruption in February 2014 — check current access before making the trip), and near the hill town of Batu, where <b>Jatim Park</b> and other family-style attractions are. Both are strictly optional, and Batu especially would mean arriving in Malang later.</p>
         </div>
       </div>
     </div>
@@ -730,48 +753,93 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Mount Bromo</div>
-          <div class="day-aside-sub">2 nights · 111 km from Malang · 2329 m altitude</div>
+          <div class="day-aside-sub">1 night · 93 km from Malang · Pasuruan side</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Active volcano · Pre-dawn</div>
         <h3 class="day-main-title">The most iconic view in Indonesia, earned at 03:30</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Malang (16 Oct). 111 km, ~4h of riding, mostly climbing — cold at altitude, riding jackets on well before the rim.</div></div>
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Malang (16 Oct). 93 km, ~3–4h of riding, mostly climbing — cold at altitude, riding jackets on well before the top.</div></div>
           <div class="sch-row"><div class="sch-time">09:00</div><div class="sch-act"><b>Wonosari Tea Plantation</b> — on the way out of Malang, near Lawang. Tea stop #2 of two: walk the rows, see the factory. Allow 1–1.5 hours.</div></div>
-          <div class="sch-row"><div class="sch-time">11:00</div><div class="sch-act">Back on the road for the long climb into the Tengger highlands. Lunch on the way.</div></div>
-          <div class="sch-row"><div class="sch-time">14:30</div><div class="sch-act">Reach Cemorolawang village on the crater rim. Check in. Explore the viewpoints in the afternoon light. Book the 03:30 jeep now.</div></div>
-          <div class="sch-row"><div class="sch-time">03:30</div><div class="sch-act">17 Oct: wake. 4WD jeep to <b>Penanjakan viewpoint</b> — 45 min. Arrive before 05:00. Wait in the cold.</div></div>
+          <div class="sch-row"><div class="sch-time">10:30</div><div class="sch-act">Back on the road for the long climb into the Tengger highlands, up to the Pasuruan side of the mountain. Lunch on the way.</div></div>
+          <div class="sch-row"><div class="sch-time">~13:30</div><div class="sch-act">Reach the overnight village on the Pasuruan side (Wonokitri / Tosari) — expect anywhere between 13:00 and 14:00. Check in. Book the 03:30 jeep now.</div></div>
+          <div class="sch-row"><div class="sch-time">16:00</div><div class="sch-act">Afternoon on the slopes: wander the village lanes and the steep vegetable fields, first views of the caldera in the late light. Early dinner — it gets cold fast at this altitude — pack the bags tonight and sleep by 20:00.</div></div>
+          <div class="sch-row"><div class="sch-time">03:30</div><div class="sch-act">17 Oct: wake. 4WD jeep to <b>Penanjakan viewpoint</b> — arrive before 05:00. Wait in the cold. Confirm the pick-up time with the driver the evening before.</div></div>
           <div class="sch-row"><div class="sch-time">05:30</div><div class="sch-act">Sunrise. Semeru erupting in the background. Bromo smoking below. Sea of Sand. Silence.</div></div>
-          <div class="sch-row"><div class="sch-time">07:30</div><div class="sch-act">Descend to the Sea of Sand. Walk to the Bromo crater. 253 steps up the volcano rim. Sulphur smell. The inside. <b>Teletubbies Hill</b> and the <b>Whispering Sand</b> are optional extras on the way back.</div></div>
-          <div class="sch-row"><div class="sch-time">11:00</div><div class="sch-act">Back on the rim for breakfast or an early lunch. The rest of 17 Oct is a free day: sleep, wander the rim, early night. Second night on the rim.</div></div>
-          <div class="sch-row"><div class="sch-time">18 Oct</div><div class="sch-act">08:00 Depart for Banyuwangi — 229 km, the longest ride of the trip (see the next stop).</div></div>
+          <div class="sch-row"><div class="sch-time">06:15</div><div class="sch-act">The compressed version: jeep down to the Sea of Sand, walk to the foot of Bromo, climb the 253 steps to the crater rim. Sulphur smell. The inside. <b>Teletubbies Hill</b> and the <b>Whispering Sand</b> only if the clock allows.</div></div>
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart for Jember — 172 km, ~4–5h (see the next stop). It is a tight morning: if the crater walk runs long, a 09:00 start is the fallback, and Jember then comes around 14:00.</div></div>
         </div>
         <div class="places">
           <article class="place jade">
             <h4 class="place-name">Wonosari Tea Plantation</h4>
             <p class="place-desc">A tea estate on the slopes of Mount Arjuno near Lawang, roughly 30 km north of Malang, at about 950–1,250 m — cool air, endless rows of tea bushes, and a factory where you can watch the leaf being processed. It is the second of the two tea plantations on this route (the first was Gunung Mas, on Puncak Pass), and it lies on the way out of Malang, so it costs the ride very little.</p>
-            <div class="place-tip">Allow 1–1.5 hours, and keep an eye on the clock — the climb to the rim is the long half of the day. A small entrance fee applies</div>
+            <div class="place-tip">Allow 1–1.5 hours, and keep an eye on the clock — the climb to the village is the long half of the day. A small entrance fee applies</div>
             <a class="photo-btn jade-btn" href="https://www.google.com/search?q=Wonosari+Tea+Plantation+Lawang+Malang&tbm=isch" target="_blank" rel="noopener">See photos</a>
           </article>
           <article class="place">
             <h4 class="place-name">Penanjakan Sunrise Viewpoint</h4>
             <p class="place-desc">The canonical image of Java: Semeru (3676 m, active) erupting in the far background, Bromo smoking in the middle, the vast caldera Sea of Sand below, and three or four other volcanic cones framing the edges. The light changes every minute between 05:15 and 06:30. Arrive before 05:00. It will be crowded, it will be cold, it will be worth every second.</p>
-            <div class="place-tip">Hire a jeep from the rim (don't ride the NMax up in the dark). Book it through your guesthouse when you check in on 16 Oct.</div>
+            <div class="place-tip">Hire a jeep from the village (don't ride the NMax up in the dark). Book it through your guesthouse when you check in on 16 Oct, and ask how long the ride up takes from your village.</div>
             <a class="photo-btn" href="https://www.google.com/search?q=Penanjakan+viewpoint+Bromo+sunrise+Semeru&tbm=isch" target="_blank" rel="noopener">See photos</a>
           </article>
           <article class="place">
             <h4 class="place-name">Mount Bromo Crater</h4>
             <p class="place-desc">Active stratovolcano, 2329 m. Walk across the Sea of Sand (a vast caldera floor of volcanic ash) to the base, then climb 253 concrete steps to the crater rim. At the top: a hole that drops 200 m into sulphur-yellow smoke. The Tengger people make offerings here annually during Yadnya Kasada — throwing crops, livestock, and money into the volcano.</p>
-            <div class="place-tip">Cross the Sea of Sand on foot (45 min) rather than by horse — the scale only makes sense walking it</div>
+            <div class="place-tip">With the 08:00 departure, the jeep drops you at the edge of the sand; the walk across to the stairs usually takes 20–30 minutes each way, and a horse is the fast option if the clock is tight</div>
             <a class="photo-btn" href="https://www.google.com/search?q=Mount+Bromo+crater+rim+sea+of+sand&tbm=isch" target="_blank" rel="noopener">See photos</a>
           </article>
           <article class="place jade">
             <h4 class="place-name">Teletubbies Hill &amp; Whispering Sand</h4>
             <p class="place-desc">Two extras that jeep tours across the caldera usually include. <b>Whispering Sand</b> (Pasir Berbisik) is a broad stretch of fine volcanic ash in the Sea of Sand, named for the soft murmur the wind makes as it sweeps over the grains. <b>Teletubbies Hill</b> is a cluster of rolling grassy hills at the edge of the caldera, nicknamed for the children's-TV landscape they resemble, a sharp contrast to the grey ash beside them.</p>
-            <div class="place-tip">Optional on the free day. Ask the jeep driver to loop through both on the way back from the crater</div>
+            <div class="place-tip">Optional — with only one morning on the mountain, ask the jeep driver whether a short loop through both fits on the way back from the crater</div>
             <a class="photo-btn jade-btn" href="https://www.google.com/search?q=Bromo+Teletubbies+Hill+Whispering+Sand&tbm=isch" target="_blank" rel="noopener">See photos</a>
           </article>
+        </div>
+        <div class="note-block">
+          <div class="note-eyebrow">Which side of the mountain?</div>
+          <p class="note-text">Most Bromo trips sleep at <b>Cemorolawang</b>, the village on the Probolinggo side, right on the caldera rim. This ride sleeps on the other approach instead: a village on the <b>Pasuruan side (Wonokitri / Tosari)</b>, on the road that climbs toward the Penanjakan viewpoint. Both sides lead to the same caldera, the same Sea of Sand and the same crater. Mountain roads are steep and cold in the early hours — top up the tank in the last town before the climb, keep the jackets on, and ask your host how long the pre-dawn jeep run to Penanjakan takes from your village.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JEMBER -->
+<section class="day" id="d17" style="background:var(--paper-warm);">
+  <div class="container">
+    <div class="day-grid">
+      <aside class="day-aside">
+        <div>
+          <div class="day-aside-eyebrow">Saturday · 17 October</div>
+          <div class="day-number">17</div>
+        </div>
+        <div>
+          <div class="day-aside-where">Jember</div>
+          <div class="day-aside-sub">1 night · 172 km from Bromo</div>
+        </div>
+      </aside>
+      <div class="day-main">
+        <div class="day-main-eyebrow">Coffee, cocoa and tobacco country · Recovery stop</div>
+        <h3 class="day-main-title">A soft landing after a 03:30 start, in the town that built a fashion carnival</h3>
+        <div class="schedule">
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Bromo for Jember (172 km, ~4–5h) — down from the Tengger highlands and across the East Java plain, straight after sunrise and the crater. Take a proper break halfway: you have been awake since about 03:00.</div></div>
+          <div class="sch-row"><div class="sch-time">~13:00</div><div class="sch-act">Arrive Jember (nearer 14:00 if the Bromo morning ran long). Check in, lunch, a long rest.</div></div>
+          <div class="sch-row"><div class="sch-time">14:30</div><div class="sch-act">Optional: <b>Tanjung Papuma</b> on the south coast — about 45 km, roughly an hour each way. Leave by 14:30 and turn back by 16:30 so the winding road is behind you before dark. Skip it without guilt after a night like this.</div></div>
+          <div class="sch-row"><div class="sch-time">17:30</div><div class="sch-act">Evening in town: the <b>alun-alun</b> (city square) is the place for cheap street food after dark. Look for <b>suwar-suwir</b>, Jember's chewy sweet made from cooked cassava tape and the classic souvenir — shops sell it along the main roads.</div></div>
+          <div class="sch-row"><div class="sch-time">Evening</div><div class="sch-act">Early night. Tomorrow is 106 km over the Gumitir pass to Banyuwangi, followed by the long night on Ijen.</div></div>
+        </div>
+        <div class="places">
+          <article class="place jade" style="grid-column:1 / -1;">
+            <h4 class="place-name">Tanjung Papuma (optional)</h4>
+            <p class="place-desc">A forested cape on Jember's south coast, in Wuluhan district, about 45 km from the town — roughly an hour by road, with the last stretch winding through teak forest. Rocky outcrops standing offshore and big Indian Ocean waves make it the region's best-known beach, popular for sunrise and sunset photos; it is run as an ecotourism site by the state forestry company Perhutani. Quieter on ordinary weekdays than at weekends or holidays.</p>
+            <div class="place-tip">Only if the legs are fresh — check gate hours first. The surf is rough, so look rather than swim, and be back on the road before dusk</div>
+            <a class="photo-btn jade-btn" href="https://www.google.com/search?q=Tanjung+Papuma+beach+Jember&tbm=isch" target="_blank" rel="noopener">See photos</a>
+          </article>
+        </div>
+        <div class="note-block">
+          <div class="note-eyebrow">Why Jember has a name</div>
+          <p class="note-text">Jember is best known for the <b>Jember Fashion Carnaval</b>, a street parade of elaborate costumes started by the designer Dynand Fariz in the early 2000s. It is usually held in August, so it will not be on in October — you get the city without the crowds. For something easy, the <b>Indonesian Coffee and Cocoa Research Centre</b> (founded 1911) sits about 12 km south of town and shows how both crops are processed; check opening hours before you go.</p>
         </div>
       </div>
     </div>
@@ -779,7 +847,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
 </section>
 
 <!-- BANYUWANGI / IJEN -->
-<section class="day" id="d18" style="background:var(--paper-warm);">
+<section class="day" id="d18">
   <div class="container">
     <div class="day-grid">
       <aside class="day-aside">
@@ -789,34 +857,48 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div>
           <div class="day-aside-where">Banyuwangi · Ijen</div>
-          <div class="day-aside-sub">2 nights · 229 km · Bunty's birthday · blue fire pre-dawn</div>
+          <div class="day-aside-sub">2 nights · 106 km · Bunty's birthday · blue fire pre-dawn</div>
         </div>
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Blue fire · Wild East Java</div>
         <h3 class="day-main-title">The only blue volcanic flames in the world, and Bunty wakes up a year older</h3>
         <div class="schedule">
-          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Cemorolawang (18 Oct). Longest riding day: 229 km, ~7h — down off the rim and east along the north coast to the far tip of Java.</div></div>
-          <div class="sch-row"><div class="sch-time">12:30</div><div class="sch-act">Lunch on the coast road around Situbondo.</div></div>
-          <div class="sch-row"><div class="sch-time">14:00</div><div class="sch-act"><b>Baluran National Park</b> — right on the Situbondo–Banyuwangi highway, about 30–35 km before Banyuwangi. A genuine on-route stop of 30–60 minutes: savanna nicknamed "Africa van Java," even just for a stretch.</div></div>
-          <div class="sch-row"><div class="sch-time">16:00</div><div class="sch-act">Arrive Banyuwangi. Check in. Good seafood city — early dinner, then rest before a short night.</div></div>
+          <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Jember (18 Oct). 106 km, ~3h — east and up over the Gumitir pass, then down through Kalibaru into the Banyuwangi plain. Hairpins, trucks and buses share the road: no hurry (see the Gumitir card).</div></div>
+          <div class="sch-row"><div class="sch-time">~10:00</div><div class="sch-act">Short break near the top of the pass — there is a roadside rest area at Gumitir (check on the day).</div></div>
+          <div class="sch-row"><div class="sch-time">12:00</div><div class="sch-act">Arrive Banyuwangi (expect 12:00–13:00). Check in, lunch, then sleep through the afternoon — the night is long.</div></div>
+          <div class="sch-row"><div class="sch-time">18:00</div><div class="sch-act">Early dinner — Banyuwangi is a good seafood city — then bed before a short night.</div></div>
           <div class="sch-row"><div class="sch-time">23:00</div><div class="sch-act">Night departure for <b>Kawah Ijen</b> — about 1.5 hours to the trailhead (a hired car with a driver, arranged through the hotel, beats the NMax on a cold night road), then a steep 3 km hike in the dark. Blue fire only visible 23:00–05:00.</div></div>
           <div class="sch-row"><div class="sch-time">02:30</div><div class="sch-act">19 Oct: reach the crater rim. Blue sulphur flames burning in the dark below. The world's largest acidic crater lake, pH 0.</div></div>
           <div class="sch-row"><div class="sch-time">05:30</div><div class="sch-act">Crater sunrise over turquoise lake — Bunty's birthday, on top of a volcano. Descend. Breakfast, sleep.</div></div>
-          <div class="sch-row"><div class="sch-time">19 Oct</div><div class="sch-act">Rest and birthday day in Banyuwangi. Sleep in, then celebrate Bunty's birthday properly — nothing else is planned.</div></div>
+          <div class="sch-row"><div class="sch-time">19 Oct</div><div class="sch-act">Rest and birthday day in Banyuwangi. Sleep in, then celebrate Bunty's birthday properly — nothing is fixed. Two optional extras follow.</div></div>
+          <div class="sch-row"><div class="sch-time">~13:00</div><div class="sch-act">Optional half-day: <b>Baluran National Park</b>, about 35 km north of Banyuwangi (roughly an hour to the main gate; see the card). Only if everyone has slept — and be out of the park before dusk.</div></div>
+          <div class="sch-row"><div class="sch-time">~18:00</div><div class="sch-act"><b>Pantai Boom Marina</b> — an easy birthday evening on the Banyuwangi waterfront, then dinner.</div></div>
           <div class="sch-row"><div class="sch-time">20 Oct</div><div class="sch-act">08:00 Depart for Denpasar (Bali) via the Ketapang ferry — see the finish below.</div></div>
         </div>
         <div class="places">
+          <article class="place jade">
+            <h4 class="place-name">Gumitir Pass &amp; Kalibaru</h4>
+            <p class="place-desc">The mountain road that links Jember and Banyuwangi, crossing the Gumitir range on the regency border at roughly 400–500 m above sea level. Expect steep climbs, long descents and sharp bends, shared with trucks and intercity buses on a narrow two-way road; on the Banyuwangi side it drops through the town of Kalibaru. The slopes are prone to landslides after heavy rain, and the road has been closed or slowed more than once.</p>
+            <div class="place-tip">Check conditions on the morning of 18 Oct. If the pass is closed, the usual detour is the much longer north-coast road via Situbondo — ask your host before setting off</div>
+            <a class="photo-btn jade-btn" href="https://www.google.com/search?q=Gumitir+pass+Jember+Banyuwangi+road&tbm=isch" target="_blank" rel="noopener">See photos</a>
+          </article>
           <article class="place">
             <h4 class="place-name">Kawah Ijen — Blue Fire</h4>
             <p class="place-desc">The world's only large-scale blue volcanic fire, visible only before dawn. Sulphuric gases combust as they emerge from vents, producing blue flames up to 5 m high. At daylight, the fire disappears — only the world's largest acidic crater lake (pH 0, turquoise-blue, 200 m deep) remains. The sulphur miners working the same vents at 2am make this one of the most surreal places on earth. Do not skip this. Full gas mask essential.</p>
             <div class="place-tip">Blue fire is only visible 23:00–05:00. Bring: headlamp, gas mask (rent at trailhead), warm jacket, trekking poles. The hike up is 3 km, steep.</div>
             <a class="photo-btn" href="https://www.google.com/search?q=Kawah+Ijen+blue+fire+volcano+night&tbm=isch" target="_blank" rel="noopener">See photos</a>
           </article>
+          <article class="place">
+            <h4 class="place-name">Pantai Boom Marina</h4>
+            <p class="place-desc">A beach on Banyuwangi's east coast, about 2 km from the town centre, that has been turned into the city's marina and yacht harbour — redevelopment began in 2015 — with the Bali Strait in view. It works both as a stop for visiting yachts and as a laid-back seafront: sand, sea views, and local reports of horse rides and pedicabs along the beach in the late afternoon.</p>
+            <div class="place-tip">A gentle birthday-evening plan after Ijen — go in the late afternoon, and check what is open on the day</div>
+            <a class="photo-btn" href="https://www.google.com/search?q=Pantai+Boom+Marina+Banyuwangi&tbm=isch" target="_blank" rel="noopener">See photos</a>
+          </article>
           <article class="place jade">
-            <h4 class="place-name">Baluran National Park</h4>
-            <p class="place-desc">Nicknamed "Africa van Java" for its open acacia savanna, unlike anywhere else in the archipelago. Banteng (wild cattle), leopards, green peacocks, deer, and a long list of birds. The main gate at Batangan sits right beside the Situbondo–Banyuwangi highway, so on 18 October the park is a stop on the route, not a detour. The famous Bekol Savanna — a flat plain under a volcanic silhouette, banteng grazing through the haze — lies about 12 km inside.</p>
-            <div class="place-tip">30–60 minutes fits lunch and a stretch of the legs. Riding the 12 km park road to Bekol (about 45 min each way, rideable on the NMax) would add 1.5 hours or more to an already 229 km day — a bonus only if you are ahead of schedule</div>
+            <h4 class="place-name">Baluran National Park (optional)</h4>
+            <p class="place-desc">Nicknamed "Africa van Java" for its open acacia savanna, unlike anywhere else in the archipelago. Banteng (wild cattle), leopards, green peacocks, deer, and a long list of birds. The main gate at Batangan sits beside the Situbondo–Banyuwangi highway, about 35 km north of Banyuwangi. The new road via Jember bypasses it, so it is no longer on the route — but it makes an out-and-back half-day on 19 October. The famous Bekol Savanna — a flat plain under a volcanic silhouette, banteng grazing through the haze — lies about 12 km inside.</p>
+            <div class="place-tip">Allow a half-day: roughly an hour each way to the gate, plus the 12 km park road to Bekol (about 45 minutes each way — ask at the gate whether motorbikes are allowed and how the road is). After a night on Ijen it is a big ask; skip it if anyone is flat</div>
             <a class="photo-btn jade-btn" href="https://www.google.com/search?q=Baluran+National+Park+savanna+banteng+Java&tbm=isch" target="_blank" rel="noopener">See photos</a>
           </article>
         </div>
@@ -826,7 +908,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
 </section>
 
 <!-- BALI -->
-<section class="day" id="bali">
+<section class="day" id="bali" style="background:var(--paper-warm);">
   <div class="container">
     <div class="day-grid">
       <aside class="day-aside">
@@ -841,11 +923,11 @@ section{min-height:100vh;padding:80px 0;position:relative;}
       </aside>
       <div class="day-main">
         <div class="day-main-eyebrow">Final destination</div>
-        <h3 class="day-main-title">1 354 km later, the engines stop at the sea</h3>
+        <h3 class="day-main-title">1 511 km later, the engines stop at the sea</h3>
         <div class="schedule">
           <div class="sch-row"><div class="sch-time">08:00</div><div class="sch-act">Depart Banyuwangi for Ketapang port. Ferry to Gilimanuk (Bali) — under an hour across the strait, bikes on board.</div></div>
           <div class="sch-row"><div class="sch-time">Morning</div><div class="sch-act">Land in Gilimanuk. Bali runs one hour ahead of Java — move your watch forward. Ride on through west Bali toward Denpasar.</div></div>
-          <div class="sch-row"><div class="sch-time">~14:00</div><div class="sch-act">Arrive Denpasar (expect 13:00–15:00, Bali time) — 141 km from Banyuwangi, about 5 hours door to door including the ferry. End of the road trip.</div></div>
+          <div class="sch-row"><div class="sch-time">~14:00</div><div class="sch-act">Arrive Denpasar (expect 13:00–15:00, Bali time) — 140 km from Banyuwangi, about 5 hours door to door including the ferry. End of the road trip.</div></div>
           <div class="sch-row"><div class="sch-time">Ongoing</div><div class="sch-act"><b>Tanah Lot</b> — sea temple at sunset. <b>Ubud</b> — rice terraces, monkey forest, galleries. <b>Uluwatu</b> — clifftop temple, Kecak fire dance. Stay as many nights as you deserve.</div></div>
         </div>
         <div class="places">
@@ -864,7 +946,7 @@ section{min-height:100vh;padding:80px 0;position:relative;}
         </div>
         <div class="note-block">
           <div class="note-eyebrow">You made it</div>
-          <p class="note-text">Jakarta to Denpasar. <b>1 354 km.</b> Nine stops. Two tea plantations, two active volcanoes, one world's largest Buddhist monument, one blue fire, one birthday. Every tank of fuel, every sunrise, every roadside nasi bungkus eaten by the bike — they accumulate into something that can't be explained to someone who wasn't there. That's the point of the road.</p>
+          <p class="note-text">Jakarta to Denpasar. <b>1 511 km.</b> Ten stops. Two tea plantations, two active volcanoes, one world's largest Buddhist monument, one blue fire, one birthday. Every tank of fuel, every sunrise, every roadside nasi bungkus eaten by the bike — they accumulate into something that can't be explained to someone who wasn't there. That's the point of the road.</p>
         </div>
       </div>
     </div>
@@ -967,13 +1049,13 @@ section{min-height:100vh;padding:80px 0;position:relative;}
     </div>
 
     <div class="hotels-block">
-      <div class="hotels-subtitle">Mount Bromo / Cemorolawang · 16–17 October</div>
+      <div class="hotels-subtitle">Mount Bromo / Wonokitri · 16 October</div>
       <div class="hotels-table-wrap"><table class="hotels-table"><thead><tr><th class="lq">Level</th><th class="lq">Hotel</th><th class="lq">Note</th><th class="lq">Site</th></tr></thead><tbody>
         <tr><td><span class="cat">Premium</span></td><td><span class="name">Jiwa Jawa Bromo Resort</span></td><td>On the crater rim, heated rooms</td><td><a href="https://www.jiwajawaresort.com" target="_blank">jiwajawaresort.com</a></td></tr>
         <tr><td><span class="cat">Mid</span></td><td><span class="name">Lava View Lodge</span></td><td>Crater rim, classic, cold nights</td><td><a href="https://www.booking.com" target="_blank">booking.com — Lava View Lodge</a></td></tr>
         <tr><td><span class="cat">Budget</span></td><td><span class="name">Cafe Lava Hostel</span></td><td>Basic but right on the rim, very popular</td><td><a href="https://www.booking.com" target="_blank">booking.com — Cafe Lava</a></td></tr>
       </tbody></table></div>
-      <div style="font-size:12px;font-style:italic;color:var(--slate);padding:10px 14px;border-left:3px solid var(--gold);background:rgba(200,150,91,0.06);margin-top:8px;border-radius:0 3px 3px 0;">⚠ Book Bromo accommodation 2–4 weeks ahead. These fill fast. Staying on the rim (not in Probolinggo) is essential — you need a 03:30 departure for sunrise.</div>
+      <div style="font-size:12px;font-style:italic;color:var(--slate);padding:10px 14px;border-left:3px solid var(--gold);background:rgba(200,150,91,0.06);margin-top:8px;border-radius:0 3px 3px 0;">⚠ This ride sleeps on the Pasuruan side of Bromo (Wonokitri / Tosari), near the Penanjakan road. The options in the table are rim hotels at Cemorolawang on the Probolinggo side — an alternative if you would rather sleep on the caldera edge. Bromo lodging fills fast, so book 2–4 weeks ahead; whichever side you pick, you need a bed close enough for a 03:30 jeep.</div>
     </div>
 
     <div class="hotels-block">
@@ -1002,7 +1084,8 @@ section{min-height:100vh;padding:80px 0;position:relative;}
   <div class="final-content">
     <div class="final-eyebrow">An old road proverb</div>
     <p class="final-quote">"The bike doesn't care about your plans. It only cares that you showed up."</p>
-    <div class="final-bye">Good road · Good luck · 1 354 km</div>
+    <a class="final-photos" href="https://photos.app.goo.gl/Coris9MN73NwQEiH7" target="_blank" rel="noopener">Follow the ride in photos</a>
+    <div class="final-bye">Good road · Good luck · 1 511 km</div>
   </div>
 </section>
 

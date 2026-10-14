@@ -33,7 +33,7 @@ Commons) and need no third-party attribution:
 - `images/bike-nmax.*` — Yamaha NMax 155
 
 ## Social-share & icons
-- `images/og-cover.jpg` — Open Graph share image, built from the Taj Mahal photo above (same CC BY-SA 4.0 attribution applies).
+- `images/og-bromo.jpg` — Open Graph share image (the preview picture shown in WhatsApp, Telegram and iMessage), built from the Bromo photo "Mount of bromo 2024.jpg" by Rakhaguevara, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0), [source page](https://commons.wikimedia.org/wiki/File:Mount_of_bromo_2024.jpg). Cropped, darkened at the bottom and overlaid with the site title.
 - `images/favicon.svg`, `images/favicon-32.png`, `images/apple-touch-icon.png` — original site icon.
 
 ## Map
@@ -46,6 +46,7 @@ line in the corner of each map (Leaflet | OpenStreetMap contributors) must stay 
 | Map data and map pictures ("tiles") | The standard OpenStreetMap map, served by OpenStreetMap's own tile server (`tile.openstreetmap.org`) and re-coloured in the visitor's browser to match the site. | (c) [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors. Data available under the [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Tiles are used under the [OSMF Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/) (light, interactive use; visible attribution). |
 | Map library | [Leaflet](https://leafletjs.com) 1.9.4, loaded from cdnjs with an integrity (SRI) check. | BSD-2-Clause. (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade, and contributors. [Licence text](https://github.com/Leaflet/Leaflet/blob/main/LICENSE). |
 | Road lines | The route lines follow real roads. Each leg was routed once, offline, with the public [OSRM](https://project-osrm.org) demo server and stored inside `route-map.js`; the live site makes no routing requests. | Routing software: OSRM, BSD-2-Clause. Road data: (c) OpenStreetMap contributors, ODbL 1.0 (the stored lines are a derived work of that data, credited here). |
+| Distances | The kilometre figures on the site are real road distances, not the planning-table numbers: Java legs were measured once, offline, with the public [Valhalla](https://valhalla.github.io/valhalla/) service run by FOSSGIS (scooter profile, no toll roads, OpenStreetMap data); the India legs (by car) with OSRM. Figures are rounded and approximate - the actual ride depends on the road you take. |
 | Place coordinates | Stop coordinates were looked up in OpenStreetMap data (Nominatim) and checked by hand. | (c) OpenStreetMap contributors, ODbL 1.0. |
 
 Notes:
