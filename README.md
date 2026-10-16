@@ -29,6 +29,11 @@ Use a code editor (VS Code) or ask Claude to make the edit. The most common edit
   (the clock stops on "Day 22"). Before START the header shows a countdown; from START on it shows "Day N".
 - **Uploading files:** on GitHub use "Add file" > "Upload files" > "choose your files" (not drag-and-drop,
   and never copy-paste file contents into the GitHub editor - that breaks special characters).
+- **Birthday mode (Bunty, 19 October):** `birthday.js` switches the site into a birthday version by itself on
+  19 October 2026 - a gold ribbon, a card with Bunty's portrait, confetti and a cake next to the day counter. On every other day
+  it does nothing. To preview it any time open `https://threedudes.travel/?birthday=1` (and `?birthday=0` to switch it off).
+  The words are at the top of `birthday.js`, between the quote marks. Upload `birthday.js` together with `index.html` and
+  `indonesia_roadtrip.html`; to remove the mode afterwards, delete the one `birthday.js` line from those two pages.
 - **Kilometres:** all distances on the site are real road distances measured with OpenStreetMap routing
   (scooter profile, no toll roads for the Java bike legs; car for India), not the numbers from the planning table.
   They are rounded. If the route changes, tell Claude - the totals appear in `index.html`, `route-map.js` and the guide.
