@@ -34,6 +34,10 @@ Use a code editor (VS Code) or ask Claude to make the edit. The most common edit
   it does nothing. To preview it any time open `https://threedudes.travel/?birthday=1` (and `?birthday=0` to switch it off).
   The words are at the top of `birthday.js`, between the quote marks. Upload `birthday.js` together with `index.html` and
   `indonesia_roadtrip.html`; to remove the mode afterwards, delete the one `birthday.js` line from those two pages.
+- **The NMax video and photos (section "The machine"):** the video exists in two sizes, `images/nmax-720.mp4` and
+  `images/nmax-480.mp4` (muted, about 22 seconds), plus a cover picture `images/nmax-poster.webp` and three photos
+  `images/nmax-photo-1/2/3.webp`. It loads only when a visitor scrolls near it. To swap the video, ask Claude to
+  compress the new clip into those two sizes - please do not upload raw phone videos (they are 5-10 MB).
 - **Kilometres:** all distances on the site are real road distances measured with OpenStreetMap routing
   (scooter profile, no toll roads for the Java bike legs; car for India), not the numbers from the planning table.
   They are rounded. If the route changes, tell Claude - the totals appear in `index.html`, `route-map.js` and the guide.

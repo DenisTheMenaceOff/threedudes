@@ -30,7 +30,7 @@ The three rider portraits and the Yamaha NMax photo are the trip's own images (n
 Commons) and need no third-party attribution:
 
 - `images/crew-bunty.*`, `images/crew-adam.*`, `images/crew-den.*` — rider portraits
-- `images/bike-nmax.*` — Yamaha NMax 155
+- `images/bike-nmax.*` — Yamaha NMax 155 (earlier photo, no longer shown on the page)
 
 ## Social-share & icons
 - `images/og-bromo.jpg` — Open Graph share image (the preview picture shown in WhatsApp, Telegram and iMessage), built from the Bromo photo "Mount of bromo 2024.jpg" by Rakhaguevara, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0), [source page](https://commons.wikimedia.org/wiki/File:Mount_of_bromo_2024.jpg). Cropped, darkened at the bottom and overlaid with the site title.
@@ -58,3 +58,10 @@ Notes:
   and add the CARTO credit next to the OpenStreetMap one.
 - The little round symbols on the map (coffee cup, volcano, palm tree, plane) are ordinary Unicode
   emoji drawn by the visitor's device; no image files are involved.
+
+## Our own NMax photos and video
+Shot by the riders on the trip - no third-party attribution needed:
+
+- `images/nmax-photo-1.webp`, `nmax-photo-2.webp`, `nmax-photo-3.webp` - photos of our Yamaha NMax 155
+- `images/nmax-720.mp4` (computers) and `images/nmax-480.mp4` (phones / slow connections) - the same short walk-around video, compressed for the web, without sound
+- `images/nmax-poster.webp` - the still picture shown before the video starts

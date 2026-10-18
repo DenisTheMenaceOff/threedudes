@@ -335,19 +335,32 @@
   }
   @media(max-width:860px){.bike .wrap{grid-template-columns:1fr}}
   .bike .frame{
-    aspect-ratio:4/3;border:1px solid var(--line);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-    background:linear-gradient(160deg,#F7DDB7,#FAE4C1);
-    overflow:hidden;
+    position:relative;aspect-ratio:16/9;border:1px solid var(--line);
+    background:#2b3a29;overflow:hidden;
   }
-  .bike .frame img{width:100%;height:100%;object-fit:cover;display:block}
-  .bike .frame .big{
-    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
-    font-size:clamp(72px,10vw,128px);line-height:1;color:var(--line);
+  .bike .frame video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;background:#2b3a29}
+  .vbtn{
+    position:absolute;right:12px;bottom:12px;width:44px;height:44px;padding:0;border-radius:50%;
+    border:1px solid rgba(250,228,193,.75);background:rgba(36,30,26,.55);color:var(--ivory);
+    font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:background .2s;
   }
-  .bike .frame .soon{
-    font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A8172;
+  .vbtn:hover{background:rgba(36,30,26,.82)}
+  .vbtn:focus-visible{outline:2px solid var(--mustard);outline-offset:3px}
+  .vbtn.idle{ /* before the video has started: a large play button in the middle */
+    right:auto;bottom:auto;top:50%;left:50%;margin:-36px 0 0 -36px;width:72px;height:72px;font-size:24px;padding-left:4px;
   }
+  .bike-photos{
+    grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.6vw,18px);
+    margin-top:clamp(0px,1vw,10px);
+  }
+  .bike-photos figure{margin:0;aspect-ratio:4/3;border:1px solid var(--line);overflow:hidden;background:#2b3a29}
+  .bike-photos img{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:560px){
+    .bike-photos{grid-template-columns:1fr 1fr}
+    .bike-photos figure:first-child{grid-column:1/-1}
+  }
+  .bike-caption{grid-column:1/-1;font-size:12px;letter-spacing:.04em;color:#8A8172;margin-top:-6px}
   .bike h3{
     font-family:'Cormorant Garamond',serif;font-weight:500;
     font-size:clamp(30px,4vw,46px);line-height:1.1;
@@ -569,7 +582,11 @@
   </div>
   <div class="wrap">
     <div class="frame">
-      <picture><source srcset="images/bike-nmax.webp" type="image/webp"><img src="images/bike-nmax.jpg" alt="Yamaha NMax 155 scooter" loading="lazy" decoding="async"></picture>
+      <video id="nmax-video" muted loop playsinline preload="none"
+             data-poster="images/nmax-poster.webp" width="1280" height="720"
+             aria-label="Short video walking around our black Yamaha NMax 155 with gold wheels"
+             data-src-hd="images/nmax-720.mp4" data-src-sd="images/nmax-480.mp4"></video>
+      <button class="vbtn idle" id="nmax-btn" type="button" aria-label="Play video of our NMax">&#9654;</button>
     </div>
     <div>
       <h3>Yamaha <em>NMax&nbsp;155</em></h3>
@@ -580,6 +597,12 @@
         <li><span>Mission</span><b>Java, end to end</b></li>
       </ul>
     </div>
+    <div class="bike-photos">
+      <figure><img src="images/nmax-photo-1.webp" alt="Our black Yamaha NMax 155 with gold wheels and a straw hat on its mirror, parked among green plants" width="1000" height="753" loading="lazy" decoding="async"></figure>
+      <figure><img src="images/nmax-photo-2.webp" alt="The NMax seen from the front left on a palm-lined road" width="1000" height="753" loading="lazy" decoding="async"></figure>
+      <figure><img src="images/nmax-photo-3.webp" alt="Front view of the NMax with its straw hat on the mirror" width="1000" height="753" loading="lazy" decoding="async"></figure>
+    </div>
+    <p class="bike-caption">The real thing: our NMax 155.</p>
   </div>
 </section>
 
@@ -729,5 +752,57 @@
 })();
 </script>
 
+<script>
+/* NMax video: loads only when the visitor scrolls near it, plays muted in a loop while it is on screen,
+   pauses when it is off screen. Phones / slow connections get the smaller file. With "reduce motion" or
+   "data saver" switched on it never starts by itself - there is a play button instead. */
+(function(){
+  var v = document.getElementById('nmax-video'), btn = document.getElementById('nmax-btn');
+  if (!v || !btn) { return; }
+  v.muted = true; v.defaultMuted = true;
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
+  var saveData = !!conn.saveData;
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var auto = !reduce && !saveData;
+  var loaded = false, started = false, userPaused = false, inView = false;
+
+  function pick(){
+    var c = navigator.connection || conn;                       // read the connection speed at the moment of loading
+    var slow = /(^|-)(2g|3g)$/.test((c && c.effectiveType) || '');
+    var small = window.innerWidth <= 700 || slow || saveData;
+    return v.getAttribute(small ? 'data-src-sd' : 'data-src-hd');
+  }
+  function setPoster(){ var s = v.getAttribute('data-poster'); if (s && !v.getAttribute('poster')) { v.setAttribute('poster', s); } }
+  function load(){ if (loaded) { return; } loaded = true; setPoster(); v.preload = 'auto'; v.src = pick(); v.load(); }
+  function play(){ var p = v.play(); if (p && p.catch) { p.catch(function(){ /* autoplay refused: the play button stays */ }); } }
+  function paint(){
+    if (!v.paused) { btn.className = 'vbtn'; btn.innerHTML = '&#10074;&#10074;'; btn.setAttribute('aria-label', 'Pause video'); }
+    else { btn.className = started ? 'vbtn' : 'vbtn idle'; btn.innerHTML = '&#9654;'; btn.setAttribute('aria-label', 'Play video of our NMax'); }
+  }
+  function toggle(){
+    if (v.paused) { userPaused = false; load(); play(); } else { userPaused = true; v.pause(); }
+  }
+  v.addEventListener('playing', function(){ started = true; paint(); });
+  v.addEventListener('play', paint);
+  v.addEventListener('pause', paint);
+  v.addEventListener('error', function(){ loaded = false; started = false; paint(); });
+  btn.addEventListener('click', toggle);
+  v.addEventListener('click', toggle);
+
+  if (!('IntersectionObserver' in window)) { setPoster(); paint(); return; }
+  // 1) fetch the cover picture (and, when allowed, the video) a little before it scrolls into view
+  new IntersectionObserver(function(es){ if (es[0].isIntersecting) { setPoster(); if (auto) { load(); } } }, {rootMargin: '600px 0px'}).observe(v);
+  if (!auto) { paint(); return; }
+  // 2) play only while it is really visible
+  new IntersectionObserver(function(es){
+    inView = es[0].isIntersecting;
+    if (inView) { if (!userPaused) { load(); play(); } } else if (!v.paused) { v.pause(); }
+  }, {threshold: 0.35}).observe(v);
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) { if (!v.paused) { v.pause(); } } else if (inView && !userPaused && started) { play(); }
+  });
+  paint();
+})();
+</script>
 </body>
 </html>
